@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   description: "Results-driven Software Engineer with experience delivering scalable web applications. Skilled in C#, ASP.NET, Angular, SQL databases, and Azure Cloud Services. Creating content for 2.8M+ professionals.",
   keywords: ["Full Stack Developer", "Software Engineer", "Angular", "ASP.NET", "Next.js", "React", "TypeScript", "Azure"],
   authors: [{ name: "Naresh Kumar Purohit" }],
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: "Naresh Kumar Purohit - Full Stack Developer",
     description: "Building Solutions, One Commit at a Time. Sharing Insights on Tech & Innovation.",
