@@ -7,7 +7,7 @@ import { useRef } from 'react';
 const socialLinks = [
   { icon: Twitter, href: 'https://twitter.com/MSpurohit15', label: 'Twitter' },
   { icon: Github, href: 'https://github.com/Mspurohit15', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/nareshpurohit', label: 'LinkedIn' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/nareshpurohit7890/', label: 'LinkedIn' },
   { icon: Book, href: 'https://dev.to/mspurohit15', label: 'Dev.to' },
   { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=nareshkumarpurohit7890@gmail.com', label: 'Email' },
 ];

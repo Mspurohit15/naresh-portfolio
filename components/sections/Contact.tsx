@@ -134,7 +134,7 @@ export default function Contact() {
 
                 {/* Connect on LinkedIn Button */}
                 <motion.a
-                  href="https://www.linkedin.com/in/nareshpurohit"
+                  href="https://www.linkedin.com/in/nareshpurohit7890/"
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: 20 }}
