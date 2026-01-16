@@ -49,9 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body>
-        <SmoothScroll>
+        {/* <SmoothScroll> */}
           {children}
-        </SmoothScroll>
+        {/* </SmoothScroll> */}
       </body>
     </html>
   );

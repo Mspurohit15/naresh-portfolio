@@ -18,12 +18,16 @@ const roles = [
   '🚀 Startup Enthusiast',
 ];
 
-// Floating icons for visual interest
+// Floating icons for visual interest - including social media
 const floatingIcons = [
-  { Icon: Code2, delay: 0, x: '10%', y: '20%' },
-  { Icon: Sparkles, delay: 0.5, x: '85%', y: '15%' },
-  { Icon: Zap, delay: 1, x: '15%', y: '70%' },
-  { Icon: Rocket, delay: 1.5, x: '80%', y: '65%' },
+  { Icon: Code2, delay: 0, x: '10%', y: '20%', duration: 8, rotate: true },
+  { Icon: Twitter, delay: 0.3, x: '85%', y: '15%', duration: 10, rotate: false },
+  { Icon: Linkedin, delay: 0.6, x: '15%', y: '70%', duration: 12, rotate: false },
+  { Icon: Mail, delay: 0.9, x: '80%', y: '65%', duration: 9, rotate: true },
+  { Icon: Sparkles, delay: 1.2, x: '5%', y: '45%', duration: 11, rotate: true },
+  { Icon: Github, delay: 1.5, x: '90%', y: '40%', duration: 13, rotate: false },
+  { Icon: Zap, delay: 1.8, x: '12%', y: '85%', duration: 10, rotate: true },
+  { Icon: Rocket, delay: 2.1, x: '88%', y: '80%', duration: 14, rotate: true },
 ];
 
 export default function Hero() {
@@ -49,22 +53,24 @@ export default function Hero() {
           return (
             <motion.div
               key={index}
-              className="absolute text-primary/20"
+              className="absolute text-primary/30"
               style={{ left: item.x, top: item.y }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ 
-                opacity: [0.2, 0.5, 0.2],
+                opacity: [0.3, 0.7, 0.3],
                 scale: [1, 1.2, 1],
-                rotate: [0, 360],
+                rotate: item.rotate ? [0, 360] : 0,
+                x: [0, Math.random() > 0.5 ? 30 : -30, 0],
+                y: [0, Math.random() > 0.5 ? 20 : -20, 0],
               }}
               transition={{
-                duration: 8,
+                duration: item.duration,
                 delay: item.delay,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
             >
-              <Icon size={60} />
+              <Icon size={80} />
             </motion.div>
           );
         })}
@@ -170,12 +176,51 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* Social Links with Bounce Animation */}
+          {/* Social Links - Fixed Right Sidebar */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4"
+          >
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <motion.a
+                  key={social.href}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 1.3 + index * 0.1,
+                    type: 'spring',
+                    stiffness: 300,
+                  }}
+                  whileHover={{ 
+                    x: -8, 
+                    scale: 1.2,
+                    rotate: [0, -10, 10, 0],
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-3 glass rounded-full border border-white/10 text-white hover:text-primary hover:border-primary/50 transition-smooth"
+                >
+                  <Icon size={24} />
+                </motion.a>
+              );
+            })}
+          </motion.div>
+
+          {/* Mobile Social Links - Horizontal */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex items-center justify-center gap-6 mb-10"
+            className="flex lg:hidden items-center justify-center gap-4 mb-8"
           >
             {socialLinks.map((social, index) => {
               const Icon = social.icon;
@@ -209,11 +254,12 @@ export default function Hero() {
             })}
           </motion.div>
 
-          {/* CTA Button with Pulse Animation */}
+          {/* CTA Button - Centered */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5 }}
+            className="flex justify-center mb-10"
           >
             <motion.button
               onClick={scrollToContact}
@@ -253,31 +299,6 @@ export default function Hero() {
                 </motion.span>
               </span>
             </motion.button>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="flex flex-col items-center gap-2 text-white/40"
-            >
-              <span className="text-sm">Scroll to explore</span>
-              <motion.div
-                className="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2"
-              >
-                <motion.div
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-1.5 h-1.5 bg-white/60 rounded-full"
-                />
-              </motion.div>
-            </motion.div>
           </motion.div>
         </div>
       </motion.div>
