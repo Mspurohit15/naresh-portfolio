@@ -1,9 +1,16 @@
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="glass border-t border-white/10 py-8">
-      <div className="container mx-auto px-6 text-center">
-        <p className="text-white/60">
-          © {new Date().getFullYear()} Naresh Kumar Purohit. All rights reserved. | Built with passion and code ❤️
+    <footer
+      className="py-8 px-6"
+      style={{ borderTop: '1px solid var(--border)' }}
+    >
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
+          © {year} Naresh Kumar Purohit &mdash; All rights reserved
+        </p>
+        <p className="text-sm" style={{ color: 'var(--text-dim)', opacity: 0.6 }}>
+          Built with Passion by Naresh Kumar Purohit &middot; 🇩🇪
         </p>
       </div>
     </footer>
